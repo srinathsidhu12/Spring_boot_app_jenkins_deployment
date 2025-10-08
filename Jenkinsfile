@@ -8,7 +8,7 @@ pipeline {
         K8S_CONTAINER_NAME = "springboot-demo"
     }
     tools {
-       jdk 'JDK21'
+       jdk 'OpenJDK-17'
        maven 'Maven-3.9.11'
     }
     stages {
