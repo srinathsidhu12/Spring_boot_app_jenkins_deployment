@@ -3,19 +3,15 @@ pipeline {
 
     environment {
         DOCKER_HUB_CREDENTIALS = credentials('dockerhub-id') // Jenkins credentials ID
-        DOCKER_HUB_REPO = "<dockerhub-username>/springboot-demo"
+        DOCKER_HUB_REPO = "srinathsidhu12/springboot-demo"
         K8S_DEPLOYMENT_NAME = "springboot-demo"
         K8S_CONTAINER_NAME = "springboot-demo"
-    }
-
-    triggers {
-        githubPush() // Webhook trigger for code changes
     }
 
     stages {
         stage('Checkout Code') {
             steps {
-                git 'https://github.com/<your-username>/springboot-demo.git'
+                git 'https://github.com/srinathsidhu12/Spring_boot_app_jenkins_deployment.git'	
             }
         }
 

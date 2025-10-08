@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: springboot-demo
-          image: <dockerhub-username>/springboot-demo:latest
+          image: srinathsidhu12/springboot-demo:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
