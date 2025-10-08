@@ -15,7 +15,7 @@ pipeline {
        steps {
           sh 'java -version'
           sh 'javac -version'
-         sh 'echo $JAVA_HOME'
+          sh 'echo $JAVA_HOME'
        }
     }
     stages {
