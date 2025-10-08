@@ -7,7 +7,9 @@ pipeline {
         K8S_DEPLOYMENT_NAME = "springboot-demo"
         K8S_CONTAINER_NAME = "springboot-demo"
     }
-
+    tools {
+       maven 'Maven-3.9.11'
+    }
     stages {
         stage('Checkout Code') {
             steps {
