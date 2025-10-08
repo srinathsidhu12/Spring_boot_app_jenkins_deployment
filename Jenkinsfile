@@ -11,19 +11,20 @@ pipeline {
        jdk 'JDK-21'
        maven 'Maven-3.9.11'
     }
-    stage('Check Java') {
-       steps {
-          sh 'java -version'
-          sh 'javac -version'
-          sh 'echo $JAVA_HOME'
-       }
-    }
     stages {
         stage('Checkout Code') {
             steps {
                 git 'https://github.com/srinathsidhu12/Spring_boot_app_jenkins_deployment.git'	
             }
         }
+        stage('Check Java') {
+            steps {
+               sh 'java -version'
+               sh 'javac -version'
+               sh 'echo $JAVA_HOME'
+            }  
+        }
+
 
         stage('Maven Build') {
             steps {
