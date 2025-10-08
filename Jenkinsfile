@@ -54,14 +54,23 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 script {
+                     // Update the image in the Kubernetes manifest
                     sh """
-                    kubectl set image deployment/${K8S_DEPLOYMENT_NAME} \
-                    ${K8S_CONTAINER_NAME}=${DOCKER_HUB_REPO}:${IMAGE_TAG} --record
+                    sed -i 's|image:.*|image: ${DOCKER_HUB_REPO}:${IMAGE_TAG}|' k8s-deployment.yaml
+                    git add k8s-deployment.yaml
+                    git commit -m "Update deployment image to ${DOCKER_HUB_REPO}:${IMAGE_TAG}"
+                    git push origin master
+                    """
+
+                    // Apply the updated manifest to the cluster
+                    sh """
+                    kubectl apply -f k8s-deployment.yaml
                     kubectl rollout status deployment/${K8S_DEPLOYMENT_NAME}
                     """
                 }
             }
-        }
+        }   
+
     }
 
     post {
