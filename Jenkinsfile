@@ -8,8 +8,16 @@ pipeline {
         K8S_CONTAINER_NAME = "springboot-demo"
     }
     tools {
+       jdk 'JDK-21'
        maven 'Maven-3.9.11'
     }
+    stage('Check Java') {
+    steps {
+        sh 'java -version'
+        sh 'javac -version'
+        sh 'echo $JAVA_HOME'
+    }
+
     stages {
         stage('Checkout Code') {
             steps {
