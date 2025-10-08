@@ -58,7 +58,7 @@ pipeline {
                      // Update the image in the Kubernetes manifest
                     sh """
                      #use token-based authentication
-                     git remote set-url origin https://${GIT_USER}:${GIT_TOKEN}@github.com/srinathsidhu12/springboot-demo.git
+                     git remote set-url origin https://${GIT_USER}:${GIT_TOKEN}@github.com/srinathsidhu12/Spring_boot_app_jenkins_deployment.git
                     
                      sed -i 's|image:.*|image: ${DOCKER_HUB_REPO}:${IMAGE_TAG}|' k8s-deployment.yaml
                      git add k8s-deployment.yaml
